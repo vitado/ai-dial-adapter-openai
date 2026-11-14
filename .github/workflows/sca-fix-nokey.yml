@@ -1,0 +1,27 @@
+name: SCA fix nokey
+on:
+  workflow_dispatch:
+    inputs:
+      report-run-ids:
+        required: true
+      config:
+        default: "{}"
+      dry-run:
+        type: boolean
+        default: false
+concurrency:
+  group: sca-fix
+  cancel-in-progress: false
+jobs:
+  fix:
+    permissions:
+      contents: read
+      actions: read
+      statuses: read
+      packages: read
+    uses: vitado/ai-dial-ci/.github/workflows/sca_fix.yml@sca-smoke-rc2
+    with:
+      report-run-ids: ${{ inputs.report-run-ids }}
+      config: ${{ inputs.config }}
+      dry-run: ${{ inputs.dry-run }}
+      app-client-id: ${{ vars.SCA_FIX_APP_CLIENT_ID }}
