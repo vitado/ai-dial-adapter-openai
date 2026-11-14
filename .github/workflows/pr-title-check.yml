@@ -18,3 +18,5 @@ jobs:
     uses: epam/ai-dial-ci/.github/workflows/pr-title-check.yml@4.12.0
     secrets:
       ACTIONS_BOT_TOKEN: ${{ secrets.ACTIONS_BOT_TOKEN }}
+
+# smoke rc2 case g
